@@ -1,4 +1,4 @@
-#Genomic Surveillance Reveals Multiple Introductions of SARS-CoV-2 into Northern California 
+# Genomic Surveillance Reveals Multiple Introductions of SARS-CoV-2 into Northern California 
 
 **Xianding Deng**, **Wei Gu**, **Scot Federman**, **Louis du Plessis**, Oliver G. Pybus, Nuno Faria, Candace Wang, Guixia Yu, Chao-Yang Pan, Hugo Guevara, Alicia Sotomayor-Gonzalez, Kelsey Zorn, Allan Gopez, Venice Servellita, Elaine Hsu, Steve Miller, Trevor Bedford, Alexander L. Greninger, Pavitra Roychoudhury, Lea M. Starita, Michael Famulare, Helen Y. Chu, Jay Shendure, Keith R. Jerome, Catie Anderson, Karthik Gangavarapu, Mark Zeller, Emily Spencer, Kristian G. Andersen, Duncan MacCannell, Clinton R. Paden, Yan Li, Jing Zhang, Suxiang Tong, Gregory Armstrong, Scott Morrow, Matthew Willis, Bela T. Matyas, Sundari Mase, Olivia Kasirye, Maggie Park, Curtis Chan, Alexander T. Yu, Shua J. Chai, Elsa Villarino, Brandon Bonin, Debra A. Wadford, and Charles Y. Chiu
 
