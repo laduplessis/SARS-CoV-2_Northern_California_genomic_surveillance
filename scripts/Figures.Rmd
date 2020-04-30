@@ -1,0 +1,441 @@
+---
+title: "SARS-CoV-2 Northern California"
+subtitle: "Figure data and plots"
+author: "Louis du Plessis"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output:
+  pdf_document:
+    toc: false
+    toc_depth: 3
+    number_sections: false
+    keep_tex: false
+    fig_crop: false
+layout: page
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r rsetup, include=FALSE}
+  
+    source("../scripts/palettes.R")
+    source("../scripts/msaplots.R")
+    source("../scripts/treeutils.R")
+    library(beastio)
+    library(cowplot)
+
+    
+    figpath <- "../results/figures/"
+    dir.create(figpath, recursive = TRUE, showWarnings = FALSE)
+    
+    knitr::opts_chunk$set(tidy=FALSE, cache=FALSE, results='hide', 
+                          dev="pdf", fig.path=figpath, fig.width=9, fig.height=4,
+                          message=FALSE, error=FALSE, warning=FALSE, echo=FALSE)
+    
+    seqlen        <- 29903
+    msalen        <- 29821
+    msalen_WA1    <- 25048
+    path          <- "../results/alignments/gisaid_cov2020_CA_152seqs.MSA.trimmed.noAmbiguous/"
+    treefile_aLRT <- "../results/phyml_aLRT/gisaid_cov2020_CA_789seqs.MSA.trimmed.noAmbiguous.phy_phyml_tree_HKY+G.rooted.tree"
+    treefile_WA1  <- "../results/WA1/WA1.noAmbiguous.0.02.phy_phyml_tree_HKY+G.rooted.tree"
+  
+    california <- read.csv("../data/california_clusters.csv")  
+
+    # Colour by county/state
+    colMap <- list("Washington"            = "#DBAF8C",
+                   "Grand Princess"        = "#FBBEBC", 
+                   "Sacramento County"     = "#C9C9C9",
+                   "San Benito County"     = "#EFCE60",
+                   "San Francisco County"  = "#F891A5",
+                   "San Joaquin County"    = "#90BFB9",
+                   "San Mateo County"      = "#A3F9B8",
+                   "Santa Clara County"    = "#D4C5FA",
+                   "Solano County"         = "#FCB780", 
+                   "Sonoma County"         = "#BEEEFD",
+                   "Marin County"          = "#C3D1FB")
+    
+    fillMap <- list("Washington"           = "#DBAF8CBB",
+                   "Grand Princess"        = "#FBBEBCBB", 
+                   "Sacramento County"     = "#C9C9C9BB",
+                   "San Benito County"     = "#EFCE60BB",
+                   "San Francisco County"  = "#F891A5BB",
+                   "San Joaquin County"    = "#90BFB9BB",
+                   "San Mateo County"      = "#A3F9B8BB",
+                   "Santa Clara County"    = "#D4C5FABB",
+                   "Solano County"         = "#FCB780BB", 
+                   "Sonoma County"         = "#BEEEFDBB",
+                   "Marin County"          = "#C3D1FBBB")
+    
+    # Heights in inches
+    histHeight       <- 1
+    histHeightNarrow <- 1.5
+    barHeight        <- 0.125
+    
+```
+
+
+
+```{r functions} 
+
+    plotAlignmentStatsNarrow <- function(seqdb, seqlen, colMap, histProp, barHeight=NA, cutoff=0, plotWidth=7) { 
+      
+            layout(matrix(c(1,2), nrow=2, byrow=TRUE), heights=c(1-histProp, histProp))
+            
+            # Plot alignment
+            filenames <- paste0(path,"MN908947.3_", gsub("/","_",seqdb$name))
+            print(filenames)
+            snpFiles  <- paste0(filenames, ".snps.csv")
+            gapFiles  <- paste0(filenames, ".gaps.csv")
+            cols      <- sapply(as.character(seqdb$location), function(x) colMap[[x]])
+            names     <- as.character(seqdb$submission_code)
+        
+            par(mai=c(0.2,2,0.3,1), mgp=c(3,0.6,0))
+            allSNPs <- plotAlignment(snpFiles, gapFiles, seqlen, cex.axis=0.8, names=names, seqCol=cols, seqBorder = "black", ambCol = dark$purple, 
+                                     plotStats=FALSE, plotGrid = FALSE, plotXAxis = FALSE, bgCol = NA)
+            
+            # Legend
+            locations <- intersect(names(colMap), as.character(seqdb$location))
+            legend("bottomleft", inset=c(-3.5/plotWidth,0), bty='n', cex=0.8, xpd=TRUE,
+                   fill=sapply(locations, function(x) colMap[[x]]), 
+                   border="black", pt.lwd = 0.5,
+                   legend=locations, title = "Geographic Sampling Location")
+            
+            # Plot SNP histogram
+            par(mai=c(0.3,2,0.3,1))
+            plotSNPHist(allSNPs, plotGrid = TRUE, cex.axis = 0.6, cutoff = cutoff, col=mPal(oxCols$gray6))
+    }
+
+
+    plotAlignmentStats <- function(seqdb, seqlen, colMap, histProp, barHeight=NA, cutoff=0, plotWidth=9) { 
+      
+            layout(matrix(c(1,2), nrow=2, byrow=TRUE), heights=c(1-histProp, histProp))
+            
+            # Plot alignment
+            filenames <- paste0(path,"MN908947.3_", gsub("/","_",seqdb$name))
+            print(filenames)
+            snpFiles  <- paste0(filenames, ".snps.csv")
+            gapFiles  <- paste0(filenames, ".gaps.csv")
+            cols      <- sapply(as.character(seqdb$location), function(x) colMap[[x]])
+            names     <- as.character(seqdb$submission_code)
+        
+            par(mai=c(0.2,2,0.3,3), mgp=c(3,0.6,0))
+            allSNPs <- plotAlignment(snpFiles, gapFiles, seqlen, cex.axis=0.8, names=names, seqCol=cols, seqBorder = "black", ambCol = dark$purple, 
+                                     plotStats=FALSE, plotGrid = FALSE, plotXAxis = FALSE, plotNames=FALSE, bgCol = NA)
+            
+            # Legend
+            locations <- intersect(names(colMap), as.character(seqdb$location))
+            legend("bottomleft", inset=c(-4.5/plotWidth,0), bty='n', cex=0.8, xpd=TRUE,
+                   fill=sapply(locations, function(x) colMap[[x]]), 
+                   border="black", pt.lwd = 0.5,
+                   legend=locations, title = "Geographic Sampling Location")
+            
+            
+            # Shading
+            offset <- seqlen
+            for (i in 1:nrow(seqdb)) {
+                if (i %% 2 == 0) {
+                    rect(offset, i-0.5, offset+25000, i+0.5, col="#EDEDED", border=NA, xpd=TRUE)
+                }
+            }
+
+            text(x=seqlen,       y=1:nrow(seqdb)-0.05, labels = names, xpd=TRUE, cex=0.5, pos=4)
+            text(x=seqlen+2500,  y=1:nrow(seqdb)-0.05, labels = seqdb$additional_short, xpd=TRUE, cex=0.5, pos=4)
+            text(x=seqlen+17500, y=1:nrow(seqdb)-0.05, labels = seqdb$collection_date, xpd=TRUE, cex=0.5, pos=4)
+
+            
+            # Plot SNP histogram
+            par(mai=c(0.3,2,0.3,3))
+            plotSNPHist(allSNPs, plotGrid = TRUE, cex.axis = 0.6, cutoff = cutoff, col=mPal(oxCols$gray6))
+    }
+
+    
+    
+    plotScatter <- function(df, x=1, y=2, col=3, cex=1, pt.cex=1, fillMap=NULL, colMap=NULL, 
+                            add=FALSE, plotGrid=TRUE, plotLegend=TRUE, legendOffset=-0.2, ...) {
+      
+      
+      colGroups <- levels(df[[col]])
+      
+      if (!add) {
+        plot(df[[x]], df[[y]], type='n', bty='n', axes=FALSE, ...)
+        axis(1, at=c(-Inf, axTicks(1), Inf), las=1)
+        axis(2, at=c(-Inf, axTicks(2), Inf), las=1)
+      }
+      
+      if (plotGrid) {
+        grid(lwd=0.5)
+      }
+      
+      for (group in colGroups)  {
+        idxs <- df[[col]] == group
+        print(group)
+        print(colMap[[group]])
+        points(df[idxs, x], df[idxs, y], col=fillMap[[group]], pch=16, cex=pt.cex)
+        points(df[idxs, x], df[idxs, y], col=colMap[[group]],  pch=1,  cex=pt.cex)
+      }
+      
+      if (plotLegend) {
+        legend("bottomright", horiz = FALSE, inset=c(legendOffset,0), bty='n', xpd=TRUE, pch=16, cex=cex, pt.cex=pt.cex,
+               border =sapply(names(colMap), function(x) colMap[[x]]), 
+               col    =sapply(names(fillMap), function(x) fillMap[[x]]), 
+               legend =names(fillMap), text.col="#00000000")
+        
+        legend("bottomright", horiz = FALSE, inset=c(legendOffset,0), bty='n', xpd=TRUE, pch=1, cex=cex, pt.cex=pt.cex,
+               col    =sapply(names(colMap), function(x) colMap[[x]]), 
+               legend =names(fillMap))
+      }
+    }
+
+```
+
+# Figures
+
+## All California
+
+```{r California-setup}
+    
+    cluster <- rev(1:nrow(california))
+    knitr::opts_chunk$set(fig.height =  0.5 + histHeight + (length(cluster)+1)*barHeight)
+   
+```
+
+```{r California-plot-narrow, fig.width=7, include=FALSE}
+
+    plotAlignmentStatsNarrow(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=7, plotWidth=7)
+
+```
+
+```{r California-plot}
+
+    plotAlignmentStats(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=7)
+
+```
+
+## WA1 cluster
+
+```{r WA1-setup}
+    
+    cluster <- rev(which(california$cluster == "WA1 cluster"))
+    knitr::opts_chunk$set(fig.height =  0.5 + histHeight + (length(cluster)+1)*barHeight)
+   
+```
+
+```{r WA1-plot-narrow, fig.width=7, include=FALSE}
+
+    plotAlignmentStatsNarrow(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=3, plotWidth=7)
+
+```
+
+```{r WA1-plot}
+
+    plotAlignmentStats(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=3)
+
+```
+
+
+
+## Santa Clara cluster
+
+```{r Santa_Clara-setup}
+
+    cluster <- rev(which(california$cluster == "Santa Clara County cluster"))
+    knitr::opts_chunk$set(fig.height =  0.5 + histHeight + (length(cluster)+1)*barHeight)
+    
+```
+
+```{r Santa_Clara-plot-narrow, fig.width=7, include=FALSE}
+
+    plotAlignmentStatsNarrow(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=1, plotWidth=7)
+
+```
+
+```{r Santa_Clara-plot}
+
+    plotAlignmentStats(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=1)
+
+```
+
+## Solano cluster
+
+```{r Solano-setup}
+
+    cluster <- rev(which(california$cluster == "Solano County cluster"))
+    knitr::opts_chunk$set(fig.height =  0.5 + histHeight + (length(cluster)+1)*barHeight)
+    
+```
+
+```{r Solano-plot-narrow, fig.width=7, include=FALSE}
+
+    plotAlignmentStatsNarrow(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=1, plotWidth=7)
+
+```
+
+```{r Solano-plot}
+
+    plotAlignmentStats(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=1)
+
+```
+
+# Unclustered
+
+```{r Unclustered-setup}
+    cluster <- rev(which(california$cluster == "" | california$cluster == "San Benito County cluster"))
+    knitr::opts_chunk$set(fig.height =  0.5 + histHeight + (length(cluster)+1)*barHeight)
+
+```
+
+```{r Unclustered-plot-narrow, fig.width=7, include=FALSE}
+
+    plotAlignmentStatsNarrow(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=4, plotWidth=7)
+
+```
+
+```{r Unclustered-plot}
+
+    plotAlignmentStats(california[cluster, ], seqlen, colMap, histProp = histHeight/(0.5 + histHeight + (length(cluster)+1)*barHeight), cutoff=4)
+
+```
+
+## Ct vs Coverage
+
+```{r ct-vs-cov, fig.width=7, fig.height=3.5}
+
+    par(mar=c(4,4,2,20))
+    california$coverage <- california$coverage*100
+    plotScatter(california, x="Ct", y="coverage", col="location", 
+                colMap=colMap, fillMap=fillMap, 
+                xlab="Ct", ylab="Coverage (%)", las=1, cex=0.8, 
+                plotLegend=TRUE, plotGrid=TRUE, ylim=c(50,100), xlim=c(15,35), legendOffset = -1)
+
+```
+
+
+
+```{r loadTree-aLRT, fig.width=2, fig.height=7, eval=TRUE}
+
+    # ML tree from PhyML, rooted and saved from FigTree in NEXUS format
+    mltree     <- read.beast(treefile_aLRT)
+    mltree@data$aLRT <- round(mltree@data$aLRT, 3)
+    metadata   <- getMetadata(mltree@phylo$tip.label)
+    
+    mrca      <- max(getBranchingTimes(mltree@phylo))
+    mutations <- 0:ceiling(mrca*msalen)
+    
+    # Cluster lookup table
+    clusters <- california[california$cluster != "", ]
+    clusters <- droplevels(clusters)
+    clusters$sequence_label <- clusters$name
+    clusterNames     <- levels(clusters$cluster)
+
+    # Use short ids for legibility
+    mltree@phylo$tip.label <- as.character(metadata$name)
+    metadata$taxon <- as.character(metadata$name)
+    
+    clusternodes <- sapply(clusterNames, function(x) getMRCA(mltree@phylo, getClusterIds(x, clusters)))
+```  
+  
+    
+```{r FullTree-aLRT, fig.width=2, fig.height=7, eval=TRUE, include=FALSE}
+
+    p <- getTreePlot(mltree, metadata, plotCountry=TRUE, plotIds=FALSE, plotTipPoints=FALSE, plotAxis=TRUE, seqlen=msalen, size=0.15, 
+                     timeTree=FALSE, plotSupport=FALSE)
+                     #highlighted_tips=metadata$name[metadata$location == "USA"]) 
+                     #highlighted_taxa=metadata$name[metadata$location == "California"]) 
+    p <- annotateClusters(p, clusternodes, fontsize=2.5, offset=5E-6, offset.text=5E-6, extend=1)
+    print(p)
+```
+    
+    
+```{r FullTree-aLRT-horiz, fig.width=2, fig.height=7, eval=TRUE}    
+
+    p <- getTreePlot(mltree, metadata, plotCountry=TRUE, plotIds=FALSE, plotTipPoints=FALSE, plotAxis=FALSE, seqlen=msalen, size=0.15, nodes.size=1.5,
+                     timeTree=FALSE, plotSupport=FALSE) + 
+         theme_tree2(panel.grid.major = element_line(colour = mPal(oxCols$gray3), size=0.15), 
+                     axis.line.x=element_line(size=0.15), axis.ticks.x=element_line(size=0.15)) +
+         theme(axis.text.x = element_text(size=8, angle=90, hjust=1)) + 
+         scale_y_continuous(breaks=NULL, expand=c(0.03,0)) + 
+         scale_x_continuous(breaks = mutations/seqlen, 
+                            labels=mutations, 
+                            limits=c(0, max(mutations)/seqlen),
+                            expand=c(0.01,0))
+    
+    p <- annotateClusters(p, clusternodes, fontsize=2.5, offset=5E-6, offset.text=5E-6, extend=1)
+    print(p)
+    
+```    
+    
+    
+```{r FullTree-aLRT-radial, fig.width=7, fig.height=7, eval=TRUE, include=TRUE}
+
+    #ggtree(mltree, layout='circular') + xlim(-1E-4, NA)
+    p <- getTreePlot(mltree, metadata, plotCountry=TRUE, plotIds=FALSE, plotTipPoints=FALSE, plotAxis=TRUE, seqlen=msalen, size=0.15, 
+                     timeTree=FALSE, plotSupport=FALSE, layout="circular") + 
+         theme_tree2(panel.grid.major = element_line(colour = mPal(oxCols$gray3), size=0.15)) +
+                     scale_y_continuous(breaks=NULL) + 
+                     scale_x_continuous(breaks = mutations/seqlen, 
+                                        labels=mutations,
+                                        limits=c(-1E-4, max(mutations)/seqlen))
+                             
+    p <- annotateClusters(p, clusternodes, fontsize=2.5, offset=5E-6, offset.text=5E-6, extend=1)
+    print(p)
+```
+
+
+```{r clusters-aLRT, fig.width=7, fig.height=5, eval=TRUE} 
+    
+    WA1  <- getClusterTreePlot("WA1 cluster", clusters, mltree, metadata, levels_back=0, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, plotCountry=TRUE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15, nodes.size=1.5, ids.size=1.5)
+    Santa_Clara  <- getClusterTreePlot("Santa Clara County cluster", clusters, mltree, metadata, levels_back=0, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, plotCountry=TRUE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15, nodes.size=1.5, ids.size=1.5)
+    Solano       <- getClusterTreePlot("Solano County cluster", clusters, mltree, metadata, levels_back=0, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, plotCountry=TRUE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15, nodes.size=1.5, ids.size=1.5)
+    
+    print(plot_grid(WA1, plot_grid(Santa_Clara, Solano, nrow=3, rel_heights = c(5,2,3), labels=c("", "D"), label_fontface="plain", align="hv"), 
+                    ncol=2, labels = c("B", "C"), label_fontface = "plain", align='hv'))
+```
+ 
+
+```{r clusters-aLRT-context, fig.width=7, fig.height=3.5, eval=TRUE, include=FALSE} 
+    
+    WA1  <- getClusterTreePlot("WA1 cluster", clusters, mltree, metadata, levels_back=2, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15)
+    Santa_Clara  <- getClusterTreePlot("Santa Clara County cluster", clusters, mltree, metadata, levels_back=3, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15)
+    Solano       <- getClusterTreePlot("Solano County cluster", clusters, mltree, metadata, levels_back=1, seqlen=seqlen, plotAxis=TRUE, plotScale=FALSE, 
+                                            highlighted_taxa=metadata$name[metadata$location == "California"], timeTree=FALSE, size=0.15)
+    
+    print(plot_grid(WA1, plot_grid(Santa_Clara, Solano, nrow=2, rel_heights = c(5,2), labels=c("C", "D"), label_fontface="plain"), 
+                    ncol=2, labels = c("B", ""), label_fontface = "plain", align='hv'))
+```
+
+
+```{r loadTree-WA1, fig.width=2, fig.height=7, eval=TRUE}
+
+    # ML tree from PhyML, rooted and saved from FigTree in NEXUS format
+    mltree_WA1           <- read.beast(treefile_WA1)
+    mltree_WA1@data$aLRT <- round(mltree_WA1@data$aLRT, 3)
+    metadata_WA1         <- getMetadata(mltree_WA1@phylo$tip.label)
+    
+    # Use short ids for legibility
+    mltree_WA1@phylo$tip.label <- as.character(metadata_WA1$name)
+    metadata_WA1$taxon         <- as.character(metadata_WA1$name)
+    
+```  
+
+```{r WA1-tree, fig.width=5, fig.height=7, eval=TRUE}
+
+    p <- getTreePlot(mltree_WA1, metadata_WA1, plotCountry=TRUE, plotIds=TRUE, plotTipPoints=FALSE, plotAxis=TRUE, seqlen=msalen_WA1, 
+                     size=0.15, nodes.size=2, ids.size=2,
+                     timeTree=FALSE, plotSupport=FALSE, highlighted_taxa=metadata$name[metadata$location == "California"])
+                     
+    print(p)
+```
+
+\clearpage
+
+# Session info
+
+```{r sessionInfo, results='markup'}
+    sessionInfo()
+```
+

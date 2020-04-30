@@ -1,0 +1,43 @@
+
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+                                  ---  PhyML 20120412  ---                                             
+                            http://www.atgc-montpellier.fr/phyml                                          
+                         Copyright CNRS - Universite Montpellier II                                 
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+. Sequence filename: 			WA1.noAmbiguous.0.02.phy
+. Data set: 				#1
+. Tree topology search : 		NNIs
+. Initial tree: 			BioNJ
+. Model of nucleotides substitution: 	HKY85
+. Number of taxa: 			88
+. Log-likelihood: 			-34701.42236
+. Unconstrained likelihood: 		-65102.40983
+. Parsimony: 				63
+. Tree size: 				0.00253
+. Discrete gamma model: 		Yes
+  - Number of categories: 		4
+  - Gamma shape parameter: 		0.029
+. Transition/transversion ratio: 	9.002
+. Nucleotides frequencies:
+  - f(A)= 0.29974
+  - f(C)= 0.18544
+  - f(G)= 0.19613
+  - f(T)= 0.31869. aLRT branch supports (cubic approximation, mixture of Chi2s distribution)
+
+. Run ID:				HKY+G
+. Random seed:				1588085817
+. Subtree patterns aliasing:		no
+. Version:				20120412
+. Time used:				0h0m18s (18 seconds)
+
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+ Suggested citations:
+ S. Guindon, JF. Dufayard, V. Lefort, M. Anisimova, W. Hordijk, O. Gascuel
+ "New algorithms and methods to estimate maximum-likelihood phylogenies: assessing the performance of PhyML 3.0."
+ Systematic Biology. 2010. 59(3):307-321.
+
+ S. Guindon & O. Gascuel
+ "A simple, fast, and accurate algorithm to estimate large phylogenies by maximum likelihood"
+ Systematic Biology. 2003. 52(5):696-704.
+ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo

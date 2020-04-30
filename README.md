@@ -19,7 +19,6 @@ _The novel coronavirus SARS-CoV-2 has caused a major global pandemic. Here we in
 - QuickTree
 - PhyML v3.3
 - BioPython
-- MUSCLE v3.8
 - ggplot2, ggtree, ape, phytools, treeio, lubridate, cowplot
 - [beastio](https://github.com/laduplessis/beastio): Commit #b18caa6
 
