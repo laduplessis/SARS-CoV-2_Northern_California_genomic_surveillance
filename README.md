@@ -26,10 +26,10 @@ _The novel coronavirus SARS-CoV-2 has caused a major global pandemic. Here we in
 
 ## Data
 
-- [`gisaid_cov2020_CA_789seqs.MSA.trimmed_taxa.csv`](): Taxon labels of sequences in the global alignment (with trimmed ends).
-- [`WA1_taxa.csv`](WA1_taxa.csv): Taxon labels of sequences in the WA1 cluster alignment 
-- [`MN908947.3.fasta`](): This is the reference sequence (Wuhan-Hu-1)
-- [`california_clusters.csv`](): Sample metadata and definitions of the clusters.
+- [`gisaid_cov2020_CA_789seqs.MSA.trimmed_taxa.csv`](https://github.com/laduplessis/SARS-CoV-2_Northern_California_genomic_surveillance/blob/master/data/gisaid_cov2020_CA_789seqs.MSA.trimmed_taxa.csv): Taxon labels of sequences in the global alignment (with trimmed ends).
+- [`WA1_taxa.csv`](https://github.com/laduplessis/SARS-CoV-2_Northern_California_genomic_surveillance/blob/master/data/WA1_taxa.csv): Taxon labels of sequences in the WA1 cluster alignment 
+- [`MN908947.3.fasta`](https://github.com/laduplessis/SARS-CoV-2_Northern_California_genomic_surveillance/blob/master/data/MN908947.3.fasta): This is the reference sequence (Wuhan-Hu-1)
+- [`california_clusters.csv`](https://github.com/laduplessis/SARS-CoV-2_Northern_California_genomic_surveillance/blob/master/data/california_clusters.csv): Sample metadata and definitions of the clusters.
 
 
 ## Phylogenetic analyses
