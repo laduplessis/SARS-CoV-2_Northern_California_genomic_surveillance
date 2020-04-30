@@ -1,0 +1,39 @@
+submission_code,name,location,collection_date,source_of_infection,additional_short,cluster,sample_type,Ct,coverage,sequencing_method
+WA1,hCoV-19/USA/WA1/2020,Washington,2020-01-19,,,WA1 cluster,,,,
+WA4,hCoV-19/USA/WA4-UW2/2020,Washington,2020-02-28,,,WA1 cluster,,,,
+UC1,hCoV-19/USA/CA-CDPH-UC1/2020,Sonoma County,2020-02-28,cruise ship,Grand Princess Voyage A Passenger,WA1 cluster,nasopharyngeal swab,23.5,0.998,MSSPE
+UC19,hCoV-19/USA/CA-CDPH-UC19/2020,Marin County,2020-03-04,cruise ship,Grand Princess Voyage A Passenger,WA1 cluster,nasopharyngeal swab,24,0.975,MSSPE
+UC20,hCoV-19/USA/CA-CDPH-UC20/2020,Solano County,2020-03-04,cruise ship,Grand Princess Voyage A Passenger,WA1 cluster,nasopharyngeal swab,22,0.989,MSSPE
+UC22,hCoV-19/USA/CA-CDPH-UC22/2020,Marin County,2020-03-04,community transmission,Community transmission,WA1 cluster,nasopharyngeal swab,24,0.828,MSSPE
+UC23,hCoV-19/USA/CA-CDPH-UC23/2020,San Joaquin County,2020-03-09,community transmission,Community transmission (healthcare worker),WA1 cluster,nasopharyngeal swab,26,0.9,MSSPE
+UC28,hCoV-19/USA/CA-CDPH-UC28/2020,San Francisco County,2020-03-14,community transmission,Community transmission,WA1 cluster,nasopharyngeal swab,24,0.988,MSSPE
+UC5,hCoV-19/USA/CA-CDPH-UC5/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,21.7,0.974,MSSPE
+UC6,hCoV-19/USA/CA-CDPH-UC6/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,22,0.992,MSSPE
+UC7,hCoV-19/USA/CA-CDPH-UC7/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,20.1,0.997,MSSPE
+UC8,hCoV-19/USA/CA-CDPH-UC8/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,22.6,0.969,MSSPE
+UC9,hCoV-19/USA/CA-CDPH-UC9/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,15.3,0.999,MSSPE
+UC10,hCoV-19/USA/CA-CDPH-UC10/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,26.6,0.824,MSSPE
+UC11,hCoV-19/USA/CA-CDPH-UC11/2020,Grand Princess,2020-03-05,cruise ship,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,19.2,0.999,MSSPE
+UC30,hCoV-19/USA/CA-CDPH-UC30/2020,Grand Princess,2020-03-05,,Grand Princess Voyage B Passenger,WA1 cluster,nasopharyngeal swab,29.9,0.872,Random+Artic
+UC4,hCoV-19/USA/CA-CDPH-UC4/2020,Solano County,2020-02-27,outbreak cluster,Community transmission (first case in US),Solano County cluster,nasopharyngeal swab,23.8,0.998,MSSPE
+UC2,hCoV-19/USA/CA-CDPH-UC2/2020,Solano County,2020-02-27,outbreak cluster,Healthcare worker (link to UC4),Solano County cluster,nasopharyngeal swab,22.8,0.998,MSSPE
+UC3,hCoV-19/USA/CA-CDPH-UC3/2020,Solano County,2020-02-27,outbreak cluster,Healthcare worker (link to UC4),Solano County cluster,nasopharyngeal swab,19.5,0.998,MSSPE
+UC13,hCoV-19/USA/CA-SCCPHD-UC13/2020,Santa Clara County,2020-03-02,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,27.5,0.995,"MSSPE, Random+Artic"
+UC15,hCoV-19/USA/CA-SCCPHD-UC15/2020,Santa Clara County,2020-03-05,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,32.8,0.931,"MSSPE, Random+Artic, Sanger sequencing for G29711T SNV"
+UC14,hCoV-19/USA/CA-SCCPHD-UC14/2020,Santa Clara County,2020-02-29,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,25.1,0.995,MSSPE
+UC16,hCoV-19/USA/CA-SCCPHD-UC16/2020,Santa Clara County,2020-03-04,outbreak cluster,Household contact of UC14,Santa Clara County cluster,nasopharyngeal swab,22,0.997,MSSPE
+UC17,hCoV-19/USA/CA-SCCPHD-UC17/2020,Santa Clara County,2020-03-08,outbreak cluster,Household contact of UC14,Santa Clara County cluster,nasopharyngeal swab,22.2,0.681,MSSPE
+UC34,hCoV-19/USA/CA-SCCPHD-UC34/2020,Santa Clara County,2020-03-05,outbreak cluster,,Santa Clara County cluster,nasopharyngeal swab,28.4,0.989,Random+Artic
+UC35,hCoV-19/USA/CA-SCCPHD-UC35/2020,Santa Clara County,2020-03-08,outbreak cluster,,Santa Clara County cluster,nasopharyngeal swab,27,0.978,Random+Artic
+UC18,hCoV-19/USA/CA-CDPH-UC18/2020,San Mateo County,2020-03-04,community transmission,Community transmission (spouse of UC25),Santa Clara County cluster,nasopharyngeal swab,27,0.767,MSSPE
+UC25,hCoV-19/USA/CA-CDPH-UC25/2020,San Mateo County,2020-03-04,community transmission,Community transmission (spouse of UC18),Santa Clara County cluster,nasopharyngeal swab,25,0.777,"MSSPE, Sanger sequencing for G29711T SNV"
+UC21,hCoV-19/USA/CA-CDPH-UC21/2020,Solano County,2020-03-03,community transmission,Community transmission,Santa Clara County cluster,nasopharyngeal swab,20,0.954,MSSPE
+UC12,hCoV-19/USA/CA-CDPH-UC12/2020,San Mateo County,2020-03-11,sick contact,Prolonged exposure to a positive case (Switzerland),,combined nasopharyngeal / oropharyngeal swab,26.9,0.812,MSSPE
+UC24,hCoV-19/USA/CA-CDPH-UC24/2020,Sacramento County,2020-03-07,community transmission,Community transmission (foster care),,nasopharyngeal swab,23,0.906,MSSPE
+UC26,hCoV-19/USA/CA-CDPH-UC26/2020,San Francisco County,2020-03-13,travel-associated,LA traveler,,nasopharyngeal swab,32,0.998,MSSPE
+UC27,hCoV-19/USA/CA-CDPH-UC27/2020,San Francisco County,2020-03-13,travel-associated,NY traveler (healthcare worker),,nasopharyngeal swab,23,0.905,MSSPE
+UC32,hCoV-19/USA/CA-UCSF-UC32/2020,San Francisco County,2020-03-05,community transmission,Close contact of UC33,,nasopharyngeal swab,32.5,0.957,Random+Artic
+UC33,hCoV-19/USA/CA-UCSF-UC33/2020,San Francisco County,2020-03-07,community transmission,Community transmission (airport worker),,nasopharyngeal swab,31.2,0.974,Random+Artic
+UC36,hCoV-19/USA/CA-UCSF-UC36/2020,San Francisco County,2020-03-20,travel-associated,NY traveler,,oropharyngeal swab,32,0.993,Random+Artic
+CA3,hCoV-19/USA/CA3/2020,San Benito County,2020-01-29,travel-associated,Hubei traveler,San Benito County cluster,nasopharyngeal swab,,,Sanger sequencing of PCR amplicons
+CA4,hCoV-19/USA/CA4/2020,San Benito County,2020-01-29,sick contact,Household contact of CA3,San Benito County cluster,oropharyngeal swab,,,Sanger sequencing of PCR amplicons
