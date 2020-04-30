@@ -21,10 +21,10 @@ UC3,hCoV-19/USA/CA-CDPH-UC3/2020,Solano County,2020-02-27,outbreak cluster,Healt
 UC13,hCoV-19/USA/CA-SCCPHD-UC13/2020,Santa Clara County,2020-03-02,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,27.5,0.995,"MSSPE, Random+Artic"
 UC15,hCoV-19/USA/CA-SCCPHD-UC15/2020,Santa Clara County,2020-03-05,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,32.8,0.931,"MSSPE, Random+Artic, Sanger sequencing for G29711T SNV"
 UC14,hCoV-19/USA/CA-SCCPHD-UC14/2020,Santa Clara County,2020-02-29,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,25.1,0.995,MSSPE
-UC16,hCoV-19/USA/CA-SCCPHD-UC16/2020,Santa Clara County,2020-03-04,outbreak cluster,Household contact of UC14,Santa Clara County cluster,nasopharyngeal swab,22,0.997,MSSPE
-UC17,hCoV-19/USA/CA-SCCPHD-UC17/2020,Santa Clara County,2020-03-08,outbreak cluster,Household contact of UC14,Santa Clara County cluster,nasopharyngeal swab,22.2,0.681,MSSPE
-UC34,hCoV-19/USA/CA-SCCPHD-UC34/2020,Santa Clara County,2020-03-05,outbreak cluster,,Santa Clara County cluster,nasopharyngeal swab,28.4,0.989,Random+Artic
-UC35,hCoV-19/USA/CA-SCCPHD-UC35/2020,Santa Clara County,2020-03-08,outbreak cluster,,Santa Clara County cluster,nasopharyngeal swab,27,0.978,Random+Artic
+UC16,hCoV-19/USA/CA-SCCPHD-UC16/2020,Santa Clara County,2020-03-04,outbreak cluster,Household contact of UC13,Santa Clara County cluster,nasopharyngeal swab,22,0.997,MSSPE
+UC17,hCoV-19/USA/CA-SCCPHD-UC17/2020,Santa Clara County,2020-03-08,outbreak cluster,Household contact of UC13,Santa Clara County cluster,nasopharyngeal swab,22.2,0.681,MSSPE
+UC34,hCoV-19/USA/CA-SCCPHD-UC34/2020,Santa Clara County,2020-03-05,outbreak cluster,Workplace transmission,Santa Clara County cluster,nasopharyngeal swab,28.4,0.989,Random+Artic
+UC35,hCoV-19/USA/CA-SCCPHD-UC35/2020,Santa Clara County,2020-03-08,outbreak cluster,Transported UC14 to the hospital,Santa Clara County cluster,nasopharyngeal swab,27,0.978,Random+Artic
 UC18,hCoV-19/USA/CA-CDPH-UC18/2020,San Mateo County,2020-03-04,community transmission,Community transmission (spouse of UC25),Santa Clara County cluster,nasopharyngeal swab,27,0.767,MSSPE
 UC25,hCoV-19/USA/CA-CDPH-UC25/2020,San Mateo County,2020-03-04,community transmission,Community transmission (spouse of UC18),Santa Clara County cluster,nasopharyngeal swab,25,0.777,"MSSPE, Sanger sequencing for G29711T SNV"
 UC21,hCoV-19/USA/CA-CDPH-UC21/2020,Solano County,2020-03-03,community transmission,Community transmission,Santa Clara County cluster,nasopharyngeal swab,20,0.954,MSSPE
