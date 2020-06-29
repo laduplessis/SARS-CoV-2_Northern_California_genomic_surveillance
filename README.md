@@ -6,7 +6,7 @@
 
 ---
 
-This repository contains the data files, scripts and workflows necessary to reproduce the phylogenetic analyses and figures presented in [https://doi.org/10.1101/2020.03.27.20044925](https://doi.org/10.1101/2020.03.27.20044925). Some of the scripts may need some adjustment depending on the local setup. 
+This repository contains the data files, scripts and workflows necessary to reproduce the phylogenetic analyses and figures presented in **Deng et al., Science, 2020** ([https://doi.org/10.1126/science.abb9263](https://doi.org/10.1126/science.abb9263)). Some of the scripts may need some adjustment depending on the local setup. 
 
 Note that because of the GISAID [terms of use](https://www.gisaid.org/registration/terms-of-use/) genomic sequences cannot be shared in this repository. Instead, we make the GISAID accessions available.
 
