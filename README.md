@@ -2,6 +2,8 @@
 
 **Xianding Deng**, **Wei Gu**, **Scot Federman**, **Louis du Plessis**, Oliver G. Pybus, Nuno Faria, Candace Wang, Guixia Yu, Chao-Yang Pan, Hugo Guevara, Alicia Sotomayor-Gonzalez, Kelsey Zorn, Allan Gopez, Venice Servellita, Elaine Hsu, Steve Miller, Trevor Bedford, Alexander L. Greninger, Pavitra Roychoudhury, Lea M. Starita, Michael Famulare, Helen Y. Chu, Jay Shendure, Keith R. Jerome, Catie Anderson, Karthik Gangavarapu, Mark Zeller, Emily Spencer, Kristian G. Andersen, Duncan MacCannell, Clinton R. Paden, Yan Li, Jing Zhang, Suxiang Tong, Gregory Armstrong, Scott Morrow, Matthew Willis, Bela T. Matyas, Sundari Mase, Olivia Kasirye, Maggie Park, Curtis Chan, Alexander T. Yu, Shua J. Chai, Elsa Villarino, Brandon Bonin, Debra A. Wadford, and **Charles Y. Chiu**
 
+[![DOI](https://zenodo.org/badge/259707507.svg)](https://zenodo.org/badge/latestdoi/259707507)
+
 ---
 
 This repository contains the data files, scripts and workflows necessary to reproduce the phylogenetic analyses and figures presented in [https://doi.org/10.1101/2020.03.27.20044925](https://doi.org/10.1101/2020.03.27.20044925). Some of the scripts may need some adjustment depending on the local setup. 
